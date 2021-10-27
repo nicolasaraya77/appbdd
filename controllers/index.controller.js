@@ -1,3 +1,4 @@
+//libreria pool de conexion a BDD
 const { Pool } = require("pg");
 
 //conectar a la bdd
@@ -12,11 +13,13 @@ const pool = new Pool({
 //obtener todos los usuarios
 const getUsers = async (req, res) => {
   const response = await pool.query("SELECT * FROM users ORDER BY id ASC");
+  console.log(response);
   res.status(200).json(response.rows);
 };
 
 //obtener usuarios por id
 const getUserById = async (req, res) => {
+  console.log(req);
   const id = parseInt(req.params.id);
   const response = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
   res.json(response.rows);
