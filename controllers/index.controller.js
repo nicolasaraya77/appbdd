@@ -59,10 +59,22 @@ const deleteUser = async (req, res) => {
   res.json(`User ${id} deleted Successfully`);
 };
 
+const homeApp = async (req, res) => {
+  const response = await pool.query("SELECT * FROM users ORDER BY id ASC");
+
+  res.render("index", {
+    title: "Aquí un título es ingresado",
+    header: "Aquí un encabezado se agrega",
+    paragraph: "hola",
+    users: response.rows,
+  });
+};
+
 module.exports = {
   getUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser,
+  homeApp,
 };

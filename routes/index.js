@@ -9,6 +9,7 @@ const {
   createUser,
   updateUser,
   deleteUser,
+  homeApp,
 } = require("../controllers/index.controller");
 
 //creación de rutas  (url,controlador(funcion))
@@ -23,6 +24,8 @@ router.post("/users", createUser);
 router.put("/users/:id", updateUser);
 //ruta de eliminacion
 router.delete("/users/:id", deleteUser);
+
+router.get("/", homeApp);
 
 //exportar todas las rutas
 module.exports = router;
